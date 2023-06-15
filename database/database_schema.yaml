@@ -1,0 +1,144 @@
+tables:
+  - name: fact_games
+    columns:
+      - gameid
+      - date
+      - league
+      - year
+      - split
+      - playoffs
+      - patch
+      - gamelength
+
+  - name: dim_teams
+    columns:
+      - teamid
+      - teamname
+
+  - name: dim_players
+    columns:
+      - playerid
+      - playername
+
+  - name: fact_participants
+    columns:
+      - participantid
+      - gameid
+      - teamid
+      - playerid
+      - side
+      - position
+      - champion
+
+  - name: fact_bans
+    columns:
+      - gameid
+      - teamid
+      - ban1
+      - ban2
+      - ban3
+      - ban4
+      - ban5
+
+  - name: fact_gamestats
+    columns:
+      - gameid
+      - teamid
+      - playerid
+      - teamkills
+      - teamdeaths
+      - firstblood
+      - firstdragon
+      - firstherald
+      - inhibitors
+      - opp_inhibitors
+      - totalgold
+      - earnedgold
+      - earned_gpm
+      - earnedgoldshare
+      - goldspent
+      - firstbaron
+      - firsttower
+      - firstmidtower
+      - turretplates
+      - opp_turretplates
+      - firsttothreetowers
+      - team_kpm
+      - ckpm
+      - result
+
+  - name: fact_playerstats
+    columns:
+      - gameid
+      - participantid
+      - playerid
+      - kills
+      - deaths
+      - assists
+      - doublekills
+      - triplekills
+      - quadrakills
+      - pentakills
+      - damagetochampions
+      - damageshare
+      - damagetakenperminute
+      - damagemitigatedperminute
+      - wardsplaced
+      - wpm
+      - wardskilled
+      - controlwardsbought
+      - visionscore
+
+  - name: fact_goldandxpstats
+    columns:
+      - gameid
+      - playerid
+      - participantid
+      - goldat10
+      - xpat10
+      - csat10
+      - csdiffat10
+      - golddiffat10
+      - goldat15
+      - xpat15
+      - csat15
+      - csdiffat15
+      - golddiffat15
+      - killsat10
+      - assistsat10
+      - deathsat10
+      - opp_killsat10
+      - opp_assistsat10
+      - opp_deathsat10
+      - killsat15
+      - assistsat15
+      - deathsat15
+      - opp_killsat15
+      - opp_assistsat15
+      - opp_deathsat15
+
+  - name: fact_dragons
+    columns:
+      - gameid
+      - teamid
+      - dragons
+      - opp_dragons
+      - elementaldrakes
+      - opp_elementaldrakes
+      - infernals
+      - mountains
+      - clouds
+      - oceans
+      - chemtechs
+      - hextechs
+      - dragons (type unknown)
+      - elders
+      - opp_elders
+
+  - name: fact_barons
+    columns:
+      - gameid
+      - teamid
+      - firstbaron
+      - barons
+      - opp_barons
