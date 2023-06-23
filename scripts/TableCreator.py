@@ -2,7 +2,7 @@ import pandas as pd
 import logging
 import os
 
-logging.basicConfig(level = logging.INFO, filename = 'logs/execution.log',
+logging.basicConfig(level = logging.INFO, filename = 'logs/table-creator-execution.log',
                     format = '%(asctime)s - %(filename)s - %(funcName)s - %(levelname)s - %(message)s')
 
 class TableCreator:
@@ -57,7 +57,7 @@ class TableCreator:
             
 
 def main():
-    logging.info('Starting database creation')
+    logging.info('Starting tables creation')
     # Define the base folder path
     base_folder_path = 'data/silver/'
 

@@ -25,7 +25,8 @@ class CSVtoParquetConverter:
         csv_files = [f for f in os.listdir(self.input_directory) if f.endswith('.csv')]
         for csv_file in csv_files:
             csv_path = os.path.join(self.input_directory, csv_file)
-            parquet_output_path = os.path.join(self.output_directory, csv_file.replace('.csv', '.parquet'))
+            parquet_output_path = os.path.join(self.output_directory, csv_file.replace('.csv',
+                                                                                       '.parquet'))
             self.convert_csv_to_parquet(csv_path, parquet_output_path)
 
 if __name__ == '__main__':
