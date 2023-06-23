@@ -218,19 +218,78 @@ tables:
         type: integer
       - name: opp_killsat10
         type: integer
-      - name: opp_killsat10
+      - name: opp_assistsat10
         type: integer
-      - name: opp_killsat10
+      - name: opp_deathsat10
         type: integer
-      - name: opp_killsat10
+      - name: killsat15
         type: integer
-      - name: opp_killsat10
+      - name: assistsat15
         type: integer
-      - name: opp_killsat10
+      - name: opp_killsat15
         type: integer
-      - name: opp_killsat10
+      - name: opp_assistsat15
         type: integer
-      - name: opp_killsat10
+      - name: opp_deathsat15
         type: integer
-      - name: opp_killsat10
-        type: integer
+
+    - name: dim_dragons
+      columns:
+        - name: gameid
+          type: string
+        - name: teamid
+          type: string
+        - name: dragons
+          type: integer
+        - name: opp_dragons
+          type: integer
+        - name: elementaldrakes
+          type: integer
+        - name: opp_elementaldrakes
+          type: integer
+        - name: infernals
+          type: integer
+        - name: mountains
+          type: integer
+        - name: clouds
+          type: integer
+        - name: oceans
+          type: integer
+        - name: chemtechs
+          type: integer
+        - name: hextechs
+          type: integer
+        - name: dragons (type unknown)
+          type: integer
+        - name: elders
+          type: integer
+        - name: opp_elders
+          type: integer
+      
+      - name: dim_heralds
+        columns:
+          - name: gameid
+            type: string
+          - name: teamid
+            type: string
+          - name: firstherald
+            type: boolean
+          - name: heralds
+            type: integer
+          - name: opp_heralds
+            type: integer
+      
+      - name: dim_barons
+        columns:
+          - name: gameid
+            type: string
+          - name: teamid
+            type: string
+          - name: firstbaron
+            type: boolean
+          - name: barons
+            type: integer
+          - name: oop_barons
+            type: integer
+        
+

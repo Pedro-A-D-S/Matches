@@ -35,7 +35,8 @@ class TableCreator:
             'dim_dragons': ['gameid', 'teamid', 'dragons', 'opp_dragons', 'elementaldrakes', 'opp_elementaldrakes',
                             'infernals', 'mountains', 'clouds', 'oceans', 'chemtechs', 'hextechs', 'dragons (type unknown)',
                             'elders', 'opp_elders'],
-            'dim_barons': ['gameid', 'teamid', 'firstbaron', 'barons', 'opp_barons']
+            'dim_barons': ['gameid', 'teamid', 'firstbaron', 'barons', 'opp_barons'],
+            'dim_heralds': ['gameid', 'teamid', 'firstherald', 'heralds', 'opp_heralds']
         }
 
         for table_name, columns in tables.items():

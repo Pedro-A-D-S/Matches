@@ -290,3 +290,12 @@ data/silver/2022/fact_goldandxpstats.parquet
 data/silver/2022/fact_playerstats.parquet
 data/silver/2022/fact_side.parquet
 data/silver/2022/fact_teamstats.parquet
+data/silver/2022/dim_heralds.parquet
+data/silver/2014/dim_heralds.parquet
+data/silver/2015/dim_heralds.parquet
+data/silver/2016/dim_heralds.parquet
+data/silver/2017/dim_heralds.parquet
+data/silver/2018/dim_heralds.parquet
+data/silver/2019/dim_heralds.parquet
+data/silver/2020/dim_heralds.parquet
+data/silver/2021/dim_heralds.parquet
