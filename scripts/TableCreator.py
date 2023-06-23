@@ -10,43 +10,51 @@ class TableCreator:
         self.data = data
         self.folder_path = folder_path
 
-    def create_table(self, table_name, columns):
+    def create_table(self, table_name, columns) -> None:
         logging.info(f'Creating table: {table_name}')
-        df = self.data[columns].drop_duplicates().reset_index(drop=True)
-        file_path = os.path.join(self.folder_path, f'{table_name}.parquet')
-        df.to_parquet(file_path, index=False)
-        logging.info(f'Table created: {table_name}')
+        try:
+            df = self.data[columns].drop_duplicates().reset_index(drop=True)
+            file_path = os.path.join(self.folder_path, f'{table_name}.parquet')
+            df.to_parquet(file_path, index=False)
+            logging.info(f'Table created: {table_name}')
+        except: 
+            logging.error('Table {table_name} not created at {self.folder_path}')
 
-    def create_tables(self):
-        tables = {
-            'dim_games': ['gameid', 'league', 'year', 'split', 'playoffs', 'patch', 'gamelength'],
-            'fact_game_date': ['gameid', 'date'],
-            'dim_teams': ['teamid', 'teamname'],
-            'dim_players': ['playerid', 'playername'],
-            'dim_participants': ['participantid', 'gameid', 'teamid', 'playerid', 'position', 'champion'],
-            'fact_side': ['teamid', 'position'],
-            'dim_bans': ['gameid', 'teamid', 'ban1', 'ban2', 'ban3', 'ban4', 'ban5'],
-            'fact_amount': ['gameid', 'game'],
-            'fact_gamestats': ['gameid', 'teamid', 'playerid', 'teamkills', 'teamdeaths', 'result'],
-            'fact_teamstats': ['gameid', 'teamid', 'firstblood', 'firstdragon', 'firstherald', 'inhibitors', 'opp_inhibitors',
-                               'totalgold', 'earnedgold', 'earned gpm', 'earnedgoldshare', 'goldspent', 'firstbaron', 'firsttower',
-                               'firstmidtower', 'turretplates', 'opp_turretplates', 'firsttothreetowers', 'team kpm', 'ckpm', 'result'],
-            'fact_playerstats': ['gameid', 'participantid', 'playerid', 'kills', 'deaths', 'assists', 'doublekills', 'triplekills',
-                                 'quadrakills', 'pentakills', 'damagetochampions', 'damageshare', 'damagetakenperminute',
-                                 'damagemitigatedperminute', 'wardsplaced', 'wpm', 'wardskilled', 'controlwardsbought', 'visionscore'],
-            'fact_goldandxpstats': ['gameid', 'playerid', 'participantid', 'goldat10', 'xpat10', 'csat10', 'csdiffat10', 'golddiffat10',
-                                    'goldat15', 'xpat15', 'csat15', 'csdiffat15', 'golddiffat15', 'killsat10', 'assistsat10', 'deathsat10',
-                                    'opp_killsat10', 'opp_assistsat10', 'opp_deathsat10', 'killsat15', 'assistsat15', 'deathsat15',
-                                    'opp_killsat15', 'opp_assistsat15', 'opp_deathsat15'],
-            'dim_dragons': ['gameid', 'teamid', 'dragons', 'opp_dragons', 'elementaldrakes', 'opp_elementaldrakes',
-                            'infernals', 'mountains', 'clouds', 'oceans', 'chemtechs', 'hextechs', 'dragons (type unknown)',
-                            'elders', 'opp_elders'],
-            'dim_barons': ['gameid', 'teamid', 'firstbaron', 'barons', 'opp_barons'],
-            'dim_heralds': ['gameid', 'teamid', 'firstherald', 'heralds', 'opp_heralds']
-        }
-
-        for table_name, columns in tables.items():
-            self.create_table(table_name, columns)
+    def create_tables(self) -> None:
+        try:
+            tables = {
+                'dim_games': ['gameid', 'league', 'year', 'split', 'playoffs', 'patch', 'gamelength'],
+                'fact_game_date': ['gameid', 'date'],
+                'dim_teams': ['teamid', 'teamname'],
+                'dim_players': ['playerid', 'playername'],
+                'dim_participants': ['participantid', 'gameid', 'teamid', 'playerid', 'position', 'champion'],
+                'fact_side': ['teamid', 'position'],
+                'dim_bans': ['gameid', 'teamid', 'ban1', 'ban2', 'ban3', 'ban4', 'ban5'],
+                'fact_amount': ['gameid', 'game'],
+                'fact_gamestats': ['gameid', 'teamid', 'playerid', 'teamkills', 'teamdeaths', 'result'],
+                'fact_teamstats': ['gameid', 'teamid', 'firstblood', 'firstdragon', 'firstherald', 'inhibitors', 'opp_inhibitors',
+                                'totalgold', 'earnedgold', 'earned gpm', 'earnedgoldshare', 'goldspent', 'firstbaron', 'firsttower',
+                                'firstmidtower', 'turretplates', 'opp_turretplates', 'firsttothreetowers', 'team kpm', 'ckpm', 'result'],
+                'fact_playerstats': ['gameid', 'participantid', 'playerid', 'kills', 'deaths', 'assists', 'doublekills', 'triplekills',
+                                    'quadrakills', 'pentakills', 'damagetochampions', 'damageshare', 'damagetakenperminute',
+                                    'damagemitigatedperminute', 'wardsplaced', 'wpm', 'wardskilled', 'controlwardsbought', 'visionscore'],
+                'fact_goldandxpstats': ['gameid', 'playerid', 'participantid', 'goldat10', 'xpat10', 'csat10', 'csdiffat10', 'golddiffat10',
+                                        'goldat15', 'xpat15', 'csat15', 'csdiffat15', 'golddiffat15', 'killsat10', 'assistsat10', 'deathsat10',
+                                        'opp_killsat10', 'opp_assistsat10', 'opp_deathsat10', 'killsat15', 'assistsat15', 'deathsat15',
+                                        'opp_killsat15', 'opp_assistsat15', 'opp_deathsat15'],
+                'dim_dragons': ['gameid', 'teamid', 'dragons', 'opp_dragons', 'elementaldrakes', 'opp_elementaldrakes',
+                                'infernals', 'mountains', 'clouds', 'oceans', 'chemtechs', 'hextechs', 'dragons (type unknown)',
+                                'elders', 'opp_elders'],
+                'dim_barons': ['gameid', 'teamid', 'firstbaron', 'barons', 'opp_barons'],
+                'dim_heralds': ['gameid', 'teamid', 'firstherald', 'heralds', 'opp_heralds']
+            }
+            logging.info('Table names and column names loaded')
+            for table_name, columns in tables.items():
+                self.create_table(table_name, columns)
+                logging.info('Table {table_name} created with columns {columns}')
+        except:
+            logging.error('Tables not created')
+            
 
 def main():
     logging.info('Starting database creation')
