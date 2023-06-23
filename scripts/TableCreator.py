@@ -1,5 +1,9 @@
 import pandas as pd
+import logging
 import os
+
+logging.basicConfig(level = logging.INFO, filename = 'logs/execution.log',
+                    format = '%(asctime)s - %(filename)s - %(funcName)s - %(levelname)s - %(message)s')
 
 class TableCreator:
     def __init__(self, data, folder_path):
@@ -7,9 +11,11 @@ class TableCreator:
         self.folder_path = folder_path
 
     def create_table(self, table_name, columns):
+        logging.info(f'Creating table: {table_name}')
         df = self.data[columns].drop_duplicates().reset_index(drop=True)
         file_path = os.path.join(self.folder_path, f'{table_name}.parquet')
         df.to_parquet(file_path, index=False)
+        logging.info(f'Table created: {table_name}')
 
     def create_tables(self):
         tables = {
@@ -43,6 +49,7 @@ class TableCreator:
             self.create_table(table_name, columns)
 
 def main():
+    logging.info('Starting database creation')
     # Define the base folder path
     base_folder_path = 'data/silver/'
 
@@ -55,14 +62,18 @@ def main():
         # Check if the folder exists, if not, create it
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
+            logging.info(f'Created folder: {folder_path}')
 
         # Read the parquet file
         file_path = f'data/bronze/parquet-data/{year}_LoL_esports_match_data_from_OraclesElixir.parquet'
         df_original = pd.read_parquet(file_path)
+        logging.info(f'Read parquet file: {file_path}')
 
         # Instantiate TableCreator and create the tables
         table_creator = TableCreator(df_original, folder_path)
         table_creator.create_tables()
-
+        
+    logging.info('Database creation completed')
+    
 if __name__ == '__main__':
     main()
