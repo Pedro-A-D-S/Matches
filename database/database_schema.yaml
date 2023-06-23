@@ -182,4 +182,55 @@ tables:
       - name: visionscore
         type: integer
 
-- fazer gold e xp
+  - name: fact_gold_and_xp_stats
+    columns:
+      - name: gameid
+        type: string      
+      - name: playerid
+        type: string      
+      - name: participantid
+        type: string
+      - name: goldat10
+        type: integer
+      - name: xpat10
+        type: integer
+      - name: csat10
+        type: integer
+      - name: csdiffat10
+        type: integer
+      - name: golddiffat10
+        type: integer
+      - name: goldat15
+        type: integer
+      - name: xpat15
+        type: integer
+      - name: csat15
+        type: integer
+      - name: csdiffat15
+        type: integer
+      - name: golddiffat15
+        type: integer
+      - name: killsat10
+        type: integer
+      - name: assistsat10
+        type: integer
+      - name: deathsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer
+      - name: opp_killsat10
+        type: integer

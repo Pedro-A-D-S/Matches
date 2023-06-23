@@ -3,11 +3,11 @@ import pandas as pd
 import yaml
 
 class CSVtoParquetConverter:
-    def __init__(self, input_directory, output_directory):
+    def __init__(self, input_directory: str, output_directory: str):
         self.input_directory = input_directory
         self.output_directory = output_directory
 
-    def convert_csv_to_parquet(self, csv_path, parquet_output_path):
+    def convert_csv_to_parquet(self, csv_path, parquet_output_path) -> None:
         """
         Convert a CSV file to Parquet format.
 
@@ -18,7 +18,7 @@ class CSVtoParquetConverter:
         data = pd.read_csv(csv_path)
         data.to_parquet(parquet_output_path, index=False)
 
-    def convert_multiple_csv_to_parquet(self):
+    def convert_multiple_csv_to_parquet(self) -> None:
         """
         Convert multiple CSV files to Parquet format.
         """

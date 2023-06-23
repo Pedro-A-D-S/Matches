@@ -41,129 +41,27 @@ class TableCreator:
         for table_name, columns in tables.items():
             self.create_table(table_name, columns)
 
+def main():
+    # Define the base folder path
+    base_folder_path = 'data/silver/'
 
-# Define o caminho para a pasta
-folder_path = 'data/silver/2022/'
+    # Years to process
+    years = ['2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014']
 
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+    for year in years:
+        folder_path = os.path.join(base_folder_path, year)
 
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2022_LoL_esports_match_data_from_OraclesElixir.parquet')
+        # Check if the folder exists, if not, create it
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
 
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
+        # Read the parquet file
+        file_path = f'data/bronze/parquet-data/{year}_LoL_esports_match_data_from_OraclesElixir.parquet'
+        df_original = pd.read_parquet(file_path)
 
-# Define o caminho para a pasta
-folder_path = 'data/silver/2021/'
+        # Instantiate TableCreator and create the tables
+        table_creator = TableCreator(df_original, folder_path)
+        table_creator.create_tables()
 
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2021_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2020/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2020_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2019/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2019_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2018/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2018_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2017/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2017_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2016/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2016_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2015/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2015_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
-
-# Define o caminho para a pasta
-folder_path = 'data/silver/2014/'
-
-# Verifica se a pasta existe, se não, cria a pasta
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-# Lê o arquivo parquet
-df_original = pd.read_parquet('data/bronze/parquet-data/2014_LoL_esports_match_data_from_OraclesElixir.parquet')
-
-# Instancia o TableCreator e cria as tabelas
-table_creator = TableCreator(df_original, folder_path)
-table_creator.create_tables()
+if __name__ == '__main__':
+    main()
